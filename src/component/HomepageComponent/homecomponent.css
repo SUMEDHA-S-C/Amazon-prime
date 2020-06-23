@@ -1,0 +1,221 @@
+.homepae-container {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-image: url("https://m.media-amazon.com/images/G/31/AmazonVideo/2019/1102620_MLP_1440x675_apv189_V3._SY1200_FMJPG_.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.left {
+    width: 40%;
+    color: #fff;
+}
+
+.right {
+    width: 60%;
+    color: #fff;
+}
+
+.content {
+    position: relative;
+    top: 13%;
+    left: 9%;
+}
+
+.content h1 {
+    font-weight: bolder;
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.content p {
+    padding-bottom: 20px;
+    font-size: 21px;
+    line-height: 1.3;
+}
+
+.content a,
+.content-gulabo a,
+.entertainment a,
+.benefits a,
+.fire-stick a,
+.family a {
+    border: 1px solid #0f79af;
+    border-radius: 2px;
+    padding: 16px 18px 16px;
+    background-color: #0f79af;
+    color: #fff;
+    text-decoration: none !important;
+    cursor: pointer;
+    font-size: 17px;
+    min-width: 280px;
+    text-align: center;
+    font-weight: 700;
+}
+
+
+/* Golabo-sithabo section */
+
+.gulabo-sithabo {
+    height: 70vh;
+    background-image: url("https://m.media-amazon.com/images/G/31/AmazonVideo/2020/X-site/SingleTitle/GulaboSitabo/Launch/MLP_1440x675_2._SY1200_FMJPG_.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.gulabo-sithabo h1,
+.entertainment h1,
+.benefits h1,
+.fire-stick h1,
+.family h1 {
+    font-weight: 700;
+}
+
+.gulabo-sithabo p,
+.entertainment p,
+.benefits p,
+.fire-stick p,
+.family p {
+    font-size: 21px;
+    line-height: 1.3;
+    padding-bottom: 20px;
+}
+
+a:hover {
+    color: #fff !important;
+}
+
+.content-gulabo {
+    position: relative;
+    padding-top: 68px;
+    left: 9%;
+}
+
+
+/* entertainment section css */
+
+.entertainment {
+    height: 75vh;
+    background-image: url("https://m.media-amazon.com/images/G/01/digital/video/Magellan_MLP/IN-Living-Room-V2._CB524587855_SY1200_FMJPG_.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+}
+
+.entertainment .ent-right {
+    width: 40%;
+    position: relative;
+    left: 54%;
+    top: 34%;
+}
+
+
+/* benefits section css */
+
+.benefits {
+    height: 75vh;
+    background-image: url("https://m.media-amazon.com/images/G/01/digital/video/Magellan_MLP/PRIME_multi-benefit_MAGNET_2X._CB1519820207_SY1200_FMJPG_.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+}
+
+.benefits .benefits-left {
+    width: 30%;
+    position: relative;
+    top: 15%;
+    left: 6%;
+}
+
+
+/* fire-stick section css */
+
+.fire-stick {
+    height: 75vh;
+    background-image: url("https://images-na.ssl-images-amazon.com/images/G/01/digital/video/Magellan_MLP/MLP_Template_Image_Left._SY1200_FMJPG_.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+}
+
+.fire-stick .fire-right {
+    width: 40%;
+    position: relative;
+    top: 22%;
+    left: 56%;
+}
+
+
+/* data-saver section starts here */
+
+.data-saver {
+    display: block;
+    min-height: 47vh;
+    padding: 60px 5% 30px 4%;
+    margin: 0;
+}
+
+.col-md-4 {
+    text-align: center;
+    padding: 8px 0;
+}
+
+.data-saver h1 {
+    font-size: 36px !important;
+    font-weight: 700;
+    line-height: 1.3 !important;
+}
+
+.data-saver p {
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 27px;
+}
+
+
+/* family section css starts here */
+
+.family {
+    height: 75vh;
+    background-image: url("https://m.media-amazon.com/images/G/01/digital/video/Magellan_MLP/IN-kids-30Jan._CB1517304519_SY1200_FMJPG_.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+}
+
+.family .fam-left {
+    width: 40%;
+    position: relative;
+    top: 22%;
+    left: 5%;
+}
+
+
+/* footer section css */
+
+.footer {
+    background-color: #222;
+    text-align: center;
+    padding-top: 20px;
+    height: 16vh;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer li {
+    display: inline-block;
+    padding: 4px;
+}
+
+.footer li a {
+    text-decoration: none;
+}
+
+.footer li p {
+    color: #fff;
+}

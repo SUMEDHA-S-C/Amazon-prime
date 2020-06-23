@@ -1,0 +1,6 @@
+.registerComponent img {
+    text-align: center;
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+}
