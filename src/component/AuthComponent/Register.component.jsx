@@ -1,8 +1,12 @@
+//gravatar.com
+//md5 for security reasons
+
 import React, { Component, Fragment } from "react";
 import "./Auth.style.css";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, withRouter } from "react-router-dom/cjs/react-router-dom.min";
 import firebase from "../../firebase";
 import { toast } from "react-toastify";
+import md5 from "md5";
 
 class Register extends Component {
   // static defaultProps = {
@@ -16,6 +20,7 @@ class Register extends Component {
       username: "",
       password: "",
       email: "",
+      phonenumber: "",
       confirm_password: "",
     };
     this.handleChange = this.handleChange.bind(this);
@@ -29,18 +34,52 @@ class Register extends Component {
     if (this.state.password === this.state.confirm_password) {
       e.preventDefault();
       // console.log("Submitted", this.state);
-      let { email, password } = this.state;
+      let { email, password, username, phonenumber } = this.state;
+      //firbase.auth- authentication
       try {
         let userData = await firebase
           .auth()
           .createUserWithEmailAndPassword(email, password);
-        toast.success("Succesfully prime video account created");
-        console.log(userData);
+        // toast.success("Succesfully prime video account created");
+        // console.log(userData.user);
+        this.props.history.push("/login");
+        // console.log(this.props.history);
+        userData.user.sendEmailVerification(); //email confirmation
+        let message = `A verification mail has been sent to ${email}. Please verify. `;
+        toast.success(message);
+        //update profile image, phone, id
+        await userData.user.updateProfile({
+          displayName: username,
+          photoURL: `https://www.gravatar.com/avatar/${md5(
+            userData.user.email
+          )}?d=identicon`,
+        });
+
+        // firebase storage
+
+        await firebase
+          .database()
+          .ref()
+          .child("/users" + userData.user.uid)
+          .set({
+            username: userData.user.displayName,
+            photoURL: userData.user.photoURL,
+            uid: userData.user.uid,
+            email: userData.user.email,
+            registrationData: new Date().toString(),
+          });
+        this.setState({
+          username: "",
+          password: "",
+          email: "",
+          phonenumber: "",
+          confirm_password: "",
+        });
       } catch (err) {
         toast.error(err.message);
       }
     } else {
-      alert("Password is not same ");
+      alert("Incorrect Password ");
     }
   }
   render() {
@@ -118,4 +157,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default withRouter(Register);
