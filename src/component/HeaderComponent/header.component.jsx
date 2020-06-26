@@ -1,13 +1,58 @@
 import React, { Component, Fragment } from "react";
 import "./Header.style.css";
 import { Link, withRouter } from "react-router-dom";
+import firebase from "../../firebase";
+import { toast } from "react-toastify";
 
 class HeaderComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      user: this.props.user,
+    };
+    this.signOut = this.signOut.bind(this);
   }
+
+  signOut() {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        this.props.history.push("/login");
+        toast.success("Logged out Successfully");
+      })
+      .catch((err) => toast.errror(err.message));
+  }
+
   render() {
+    let Annonymous = () => {
+      return (
+        <Fragment>
+          <li className="nav-item">
+            <Link className="nav-link" to="/login">
+              Login
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/register">
+              Register
+            </Link>
+          </li>
+        </Fragment>
+      );
+    };
+
+    let AuthUser = () => {
+      return (
+        <Fragment>
+          <li className="nav-item">
+            <a className="nav-link" onClick={this.signOut}>
+              Logout
+            </a>
+          </li>
+        </Fragment>
+      );
+    };
     return (
       <Fragment>
         <nav className="navbar navbar-expand-lg navbar-dark bg-light">
@@ -32,21 +77,7 @@ class HeaderComponent extends Component {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/register">
-                  Register
-                </Link>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Logout
-                </a>
-              </li>
+              {this.props.user.emailVerified ? <AuthUser /> : <Annonymous />}
             </ul>
           </div>
         </nav>

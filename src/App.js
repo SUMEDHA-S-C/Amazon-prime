@@ -13,11 +13,27 @@ import PasswordReset from "./component/AuthComponent/passwordResetComponent";
 import PageNotFound from "./component/PageNotFound/pageNotFoundComponent";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import firebase from "./firebase";
 
 class App extends Component {
     constructor(props) {
-        super(props);
-        this.state = {};
+            super(props);
+            this.state = {
+                userData: "",
+            };
+        }
+        // call firebase API
+    async componentDidMount() {
+        await firebase.auth().onAuthStateChanged((user) => {
+            // console.log(user);
+            if (user) {
+                this.props.history.push("/");
+                this.setState({ userData: user });
+            } else {
+                this.props.history.push("/login");
+                this.setState({ userData: "" });
+            }
+        });
     }
     render() {
         return ( <
@@ -25,10 +41,9 @@ class App extends Component {
             <
             Router >
             <
-            header >
-            <
-            HeaderComponent / >
-            <
+            header > { /* conditional redering */ } { /* {this.state.userData?} */ } <
+            HeaderComponent user = { this.state.userData }
+            /> <
             /header> <
             ToastContainer / >
             <
