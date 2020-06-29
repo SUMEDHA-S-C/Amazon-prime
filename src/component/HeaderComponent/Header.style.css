@@ -6,3 +6,21 @@
 .navbar-brand img {
     width: 120px;
 }
+
+.nav-link {
+    position: relative;
+}
+
+.profile-img {
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    top: -5px;
+}
+
+.nav-item {
+    cursor: pointer;
+}

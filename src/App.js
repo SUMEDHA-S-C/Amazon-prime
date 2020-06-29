@@ -14,6 +14,7 @@ import PageNotFound from "./component/PageNotFound/pageNotFoundComponent";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import firebase from "./firebase";
+import ListMovie from './component/primeDetails/ListMovie'
 
 class App extends Component {
     constructor(props) {
@@ -43,10 +44,9 @@ class App extends Component {
             <
             header > { /* conditional redering */ } { /* {this.state.userData?} */ } <
             HeaderComponent user = { this.state.userData }
-            /> <
-            /header> <
-            ToastContainer / >
-            <
+            /> < /
+            header > <
+            ToastContainer / > { /* <main>{this.state.userData?<ListMovie/>:null}</main> */ } <
             main >
             <
             Switch >
@@ -62,16 +62,19 @@ class App extends Component {
             /> <
             Route path = "/password-rest"
             exact component = { PasswordReset }
-            /> <
-            Route path = "**"
-            component = { PageNotFound }
-            /> <
-            /Switch> <
-            /main> <
-            /Router> <
-            /Fragment>
-        );
+            /> {
+            this.state.userData ? ( < Route path = "/list-movies"
+                exact component = { ListMovie }
+                />):null} <
+                Route path = "**"
+                component = { PageNotFound }
+                /> < /
+                Switch > <
+                /main> < /
+                Router > <
+                /Fragment>
+            );
+        }
     }
-}
 
-export default withRouter(App);
+    export default withRouter(App);
