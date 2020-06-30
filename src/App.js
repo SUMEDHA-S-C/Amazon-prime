@@ -15,6 +15,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import firebase from "./firebase";
 import ListMovie from './component/primeDetails/ListMovie'
+import UploadVideoForm from "./component/videosComponent/UploadVideoForm";
 
 class App extends Component {
     constructor(props) {
@@ -37,44 +38,58 @@ class App extends Component {
         });
     }
     render() {
-        return ( <
-            Fragment >
-            <
-            Router >
-            <
-            header > { /* conditional redering */ } { /* {this.state.userData?} */ } <
-            HeaderComponent user = { this.state.userData }
-            /> < /
-            header > <
-            ToastContainer / > { /* <main>{this.state.userData?<ListMovie/>:null}</main> */ } <
-            main >
-            <
-            Switch >
-            <
-            Route path = "/"
-            exact component = { HomeComponent }
-            /> <
-            Route path = "/login"
-            exact component = { Login }
-            /> <
-            Route path = "/register"
-            exact component = { Register }
-            /> <
-            Route path = "/password-rest"
-            exact component = { PasswordReset }
-            /> {
-            this.state.userData ? ( < Route path = "/list-movies"
-                exact component = { ListMovie }
-                />):null} <
-                Route path = "**"
-                component = { PageNotFound }
-                /> < /
-                Switch > <
-                /main> < /
-                Router > <
-                /Fragment>
-            );
-        }
-    }
+            return ( <
+                    Fragment >
+                    <
+                    Router >
+                    <
+                    header > { /* conditional redering */ } { /* {this.state.userData?} */ } <
+                    HeaderComponent user = { this.state.userData }
+                    /> < /
+                    header > <
+                    ToastContainer / > { /* <main>{this.state.userData?<ListMovie/>:null}</main> */ } <
+                    main >
+                    <
+                    Switch >
+                    <
+                    Route path = "/"
+                    exact component = { HomeComponent }
+                    /> <
+                    Route path = "/login"
+                    exact component = { Login }
+                    /> <
+                    Route path = "/register"
+                    exact component = { Register }
+                    /> <
+                    Route path = "/password-rest"
+                    exact component = { PasswordReset }
+                    /> {
+                    this.state.userData ? ( <
+                        Fragment >
+                        <
+                        Route path = "/list-movies"
+                        exact component = { ListMovie }
+                        /> <
+                        Route path = "/upload-videos"
+                        exact component = {
+                            () => ( < UploadVideoForm user = { this.state.userData }
+                                />)} / >
+                                <
+                                /Fragment>
+                            ): null
+                        } {
+                            this.state.userData ? ( < Route path = "/list-movies"
+                                exact component = { ListMovie }
+                                />):null} <
+                                Route path = "**"
+                                component = { PageNotFound }
+                                /> < /
+                                Switch > <
+                                /main> < /
+                                Router > <
+                                /Fragment>
+                            );
+                        }
+                    }
 
-    export default withRouter(App);
+                    export default withRouter(App);

@@ -47,6 +47,11 @@ class HeaderComponent extends Component {
       return (
         <Fragment>
           <li className="nav-item">
+            <Link to="/upload-videos" className="nav-link btn btn-warning">
+              Upload
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link to="/list-movies" className="nav-link">
               Movies
             </Link>

@@ -1,0 +1,4 @@
+button {
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+    background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+}
